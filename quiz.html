@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gender Equality Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f3f4f6;
+}
+
+nav {
+    background: #111827;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.question {
+    margin-bottom: 25px;
+}
+
+.question h3 {
+    margin-bottom: 10px;
+}
+
+button.submit-btn {
+    padding: 12px 25px;
+    background: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.correct {
+    background-color: #d1fae5;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.incorrect {
+    background-color: #fee2e2;
+    padding: 4px;
+    border-radius: 4px;
+}
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<script>
+
+function calculateScore() {
+
+    const form = document.getElementById("quizForm");
+    let score = 0;
+    let totalQuestions = 15;
+
+    for (let i = 1; i <= totalQuestions; i++) {
+
+        const options = form.querySelectorAll(`input[name="q${i}"]`);
+        const selected = form.querySelector(`input[name="q${i}"]:checked`);
+
+        if (!selected) {
+            alert("Please answer all questions before submitting.");
+            return;
+        }
+
+        options.forEach(option => {
+            const label = option.parentElement;
+            label.classList.remove("correct", "incorrect");
+
+            if (option.value === "1") {
+                label.classList.add("correct");
+            }
+
+            if (option.checked && option.value === "0") {
+                label.classList.add("incorrect");
+            }
+
+            option.disabled = true;
+        });
+
+        score += parseInt(selected.value);
+    }
+
+    const resultDiv = document.getElementById("result");
+
+    let message = "";
+
+    if (score >= 13) {
+        message = "🌟 Outstanding! You demonstrate strong awareness.";
+    } else if (score >= 9) {
+        message = "👏 Good awareness! Keep questioning assumptions.";
+    } else if (score >= 5) {
+        message = "🤔 Reflection leads to growth.";
+    } else {
+        message = "📚 Awareness begins with questioning.";
+    }
+
+    resultDiv.innerHTML =
+        "<br><strong>Your Score: " + score + " / " + totalQuestions + "</strong><br><br>" +
+        message;
+
+    document.getElementById("retakeBtn").style.display = "inline-block";
+    document.getElementById("pledgeSection").style.display = "block";
+
+    resultDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+function retakeQuiz() {
+
+    const form = document.getElementById("quizForm");
+    const resultDiv = document.getElementById("result");
+
+    form.reset();
+
+    const inputs = form.querySelectorAll("input[type='radio']");
+    inputs.forEach(input => {
+        input.disabled = false;
+    });
+
+    const labels = form.querySelectorAll("label");
+    labels.forEach(label => {
+        label.classList.remove("correct", "incorrect");
+    });
+
+    resultDiv.innerHTML = "";
+
+    document.getElementById("retakeBtn").style.display = "none";
+    document.getElementById("pledgeSection").style.display = "none";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function pledge() {
+    document.getElementById("pledgeMessage").innerText =
+        "Thank you. Change begins with awareness — and grows through action.";
+
+    launchConfetti();
+}
+
+function launchConfetti() {
+
+    const button = document.getElementById("pledgeBtn");
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+    const colors = ["#7c3aed", "#2563eb", "#ec4899", "#10b981", "#f59e0b"];
+
+    for (let i = 0; i < 80; i++) {
+
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+
+        confetti.style.position = "fixed";
+        confetti.style.left = (rect.left + rect.width / 2) + "px";
+        confetti.style.top = (rect.top + rect.height / 2) + "px";
+        confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 150 + 50;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        confetti.animate([
+            { transform: "translate(0,0)", opacity: 1 },
+            { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: "ease-out"
+        });
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 1000);
+    }
+}
+
+</script>
+
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="stereotypes.html">Stereotypes</a>
+<a href="quiz.html">Quiz</a>
+<a href="archives.html">Archives</a>
+</nav>
+
+<header>
+<h1>Gender Equality Awareness Quiz</h1>
+<p>Test your understanding. Reflect honestly.</p>
+</header>
+
+<div class="quiz-container">
+<form id="quizForm">
+
+<!-- Q1 -->
+<div class="question">
+<h3>1. Who is naturally better at leadership?</h3>
+<label><input type="radio" name="q1" value="0"> A. Men</label><br>
+<label><input type="radio" name="q1" value="0"> B. Women</label><br>
+<label><input type="radio" name="q1" value="1"> C. Leadership is learned</label>
+</div>
+
+<!-- Q2 -->
+<div class="question">
+<h3>2. Emotional expression is a sign of weakness.</h3>
+<label><input type="radio" name="q2" value="0"> A. True</label><br>
+<label><input type="radio" name="q2" value="1"> B. False</label>
+</div>
+
+<!-- Q3 -->
+<div class="question">
+<h3>3. Household work should primarily be done by:</h3>
+<label><input type="radio" name="q3" value="0"> A. Women</label><br>
+<label><input type="radio" name="q3" value="1"> B. Whoever shares the home</label><br>
+<label><input type="radio" name="q3" value="0"> C. Hired help only</label>
+</div>
+
+<!-- Q4 -->
+<div class="question">
+<h3>4. Career choices should depend on:</h3>
+<label><input type="radio" name="q4" value="0"> A. Gender expectations</label><br>
+<label><input type="radio" name="q4" value="1"> B. Individual skills and interests</label>
+</div>
+
+<!-- Q5 -->
+<div class="question">
+<h3>5. Taking parental leave affects professionalism.</h3>
+<label><input type="radio" name="q5" value="0"> A. Yes</label><br>
+<label><input type="radio" name="q5" value="1"> B. No</label>
+</div>
+
+<!-- Q6 -->
+<div class="question">
+<h3>6. Boys should be discouraged from “soft” careers like teaching.</h3>
+<label><input type="radio" name="q6" value="0"> A. Agree</label><br>
+<label><input type="radio" name="q6" value="1"> B. Disagree</label>
+</div>
+
+<!-- Q7 -->
+<div class="question">
+<h3>7. Gender equality benefits:</h3>
+<label><input type="radio" name="q7" value="0"> A. Women only</label><br>
+<label><input type="radio" name="q7" value="0"> B. Men only</label><br>
+<label><input type="radio" name="q7" value="1"> C. Society as a whole</label>
+</div>
+
+<!-- Q8 -->
+<div class="question">
+<h3>8. Stereotypes are mostly:</h3>
+<label><input type="radio" name="q8" value="0"> A. Biological truths</label><br>
+<label><input type="radio" name="q8" value="1"> B. Social conditioning</label>
+</div>
+
+<!-- Q9 -->
+<div class="question">
+<h3>9. A strong workplace is built through:</h3>
+<label><input type="radio" name="q9" value="0"> A. Uniform thinking</label><br>
+<label><input type="radio" name="q9" value="1"> B. Diverse perspectives</label>
+</div>
+
+<!-- Q10 -->
+<div class="question">
+<h3>10. Mental health conversations should include:</h3>
+<label><input type="radio" name="q10" value="1"> A. Everyone</label><br>
+<label><input type="radio" name="q10" value="0"> B. Only women</label><br>
+<label><input type="radio" name="q10" value="0"> C. Only professionals</label>
+</div>
+
+<!-- Q11 -->
+<div class="question">
+<h3>11. Ambition in women is often labelled differently than in men.</h3>
+<label><input type="radio" name="q11" value="1"> A. Yes</label><br>
+<label><input type="radio" name="q11" value="0"> B. No</label>
+</div>
+
+<!-- Q12 -->
+<div class="question">
+<h3>12. Sharing domestic roles leads to:</h3>
+<label><input type="radio" name="q12" value="0"> A. Conflict</label><br>
+<label><input type="radio" name="q12" value="1"> B. Better balance</label>
+</div>
+
+<!-- Q13 -->
+<div class="question">
+<h3>13. Equality means:</h3>
+<label><input type="radio" name="q13" value="0"> A. Sameness</label><br>
+<label><input type="radio" name="q13" value="1"> B. Equal opportunity</label>
+</div>
+
+<!-- Q14 -->
+<div class="question">
+<h3>14. Stereotypes persist mainly because they are:</h3>
+<label><input type="radio" name="q14" value="0"> A. Frequently questioned</label><br>
+<label><input type="radio" name="q14" value="1"> B. Rarely examined</label>
+</div>
+
+<!-- Q15 -->
+<div class="question">
+<h3>15. Real change begins with:</h3>
+<label><input type="radio" name="q15" value="0"> A. Policies alone</label><br>
+<label><input type="radio" name="q15" value="1"> B. Everyday individual choices</label>
+</div>
+
+
+</form>
+
+<button class="submit-btn" onclick="calculateScore()">Submit Quiz</button>
+<button class="submit-btn" id="retakeBtn" onclick="retakeQuiz()" style="display:none; margin-left:10px;">
+Retake Quiz
+</button>
+
+<div class="result" id="result"></div>
+<div id="pledgeSection" style="display:none; margin-top:30px; text-align:center;">
+
+<p style="font-weight:600; font-size:18px;">
+Now that you've reflected and assessed yourself —
+will you commit to questioning stereotypes in daily life?
+</p>
+
+<button id="pledgeBtn" onclick="pledge()" 
+style="padding:12px 25px; background:#7c3aed; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:600;">
+I Commit to Equality
+</button>
+
+<p id="pledgeMessage" style="margin-top:15px; font-weight:bold;"></p>
+
+</div>
+
+
+</div>

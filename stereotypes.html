@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gender Stereotypes | Event Showcase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f3f4f6;
+    transition: 0.3s;
+}
+
+.dark-mode {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+nav {
+    background: #111827;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button.toggle {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.category {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.category h2 {
+    border-left: 6px solid #7c3aed;
+    padding-left: 10px;
+}
+
+.accordion-item {
+    background: white;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.dark-mode .accordion-item {
+    background: #1e293b;
+}
+
+.accordion-header {
+    padding: 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 16px;
+}
+
+.accordion-content p {
+    padding: 10px 0 15px 0;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pledge Button */
+.pledge-btn {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pledge-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(124, 58, 237, 0.4);
+}
+
+.pledge-btn:active {
+    transform: scale(0.96);
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+.example {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9fafb;
+    border-left: 4px solid #7c3aed;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.dark-mode .example {
+    background: #1f2937;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="stereotypes.html">Stereotypes</a>
+<a href="archives.html">Archives</a>
+</nav>
+
+<header>
+<h1>Challenging 50 Gender Stereotypes</h1>
+<p>Click to explore. Reflect. Rethink.</p>
+</header>
+
+<div class="controls">
+<input type="text" id="search" placeholder="Search stereotype...">
+<button class="toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+</div>
+
+
+<div class="category">
+<div class="category">
+<h2>Family & Home</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Women belong in the kitchen.</div>
+<div class="accordion-content">
+<p>Domestic work is a shared human responsibility, not a gender assignment.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>The global culinary industry is led by many renowned male chefs, while millions of women simultaneously lead businesses, research institutions, and governments. In households where domestic labour is shared, studies show improved relationship satisfaction and better work–life balance for both partners.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men must be the primary breadwinners.</div>
+<div class="accordion-content">
+<p>Financial capability is determined by opportunity and skill, not gender.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Modern dual-income households across urban economies function on shared financial responsibility. Research on family economics shows that flexible earning roles create resilience during job loss, career transitions, or caregiving phases. Many families today alternate primary earners based on opportunity rather than gender.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Fathers are less capable caregivers.</div>
+<div class="accordion-content">
+<p>Parenting ability depends on involvement, not biology.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Countries such as Sweden and Norway introduced policies encouraging fathers to take parental leave. The result was a measurable increase in father involvement in childcare, along with improved cognitive and emotional development in children. Many fathers remained actively engaged long after the leave period ended.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women must prioritize marriage over career.</div>
+<div class="accordion-content">
+<p>This reduces identity to relational roles rather than personal ambition.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Longitudinal studies of women who pursued higher education and careers before marriage show stronger long-term financial independence, healthier partnerships, and greater decision-making equality within families. Societies that support women’s employment also experience higher national economic growth.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men shouldn’t cook.</div>
+<div class="accordion-content">
+<p>Cooking is a life skill, not a gender trait.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Culinary schools worldwide report high male enrollment, and professional kitchens historically have been male-dominated spaces — contradicting the idea that cooking is “women’s work” at home. When cooking is shared domestically, research shows reduced invisible labour burden and more equitable household dynamics.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="category">
+<h2>Education & Careers</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Engineering is for men.</div>
+<div class="accordion-content">
+<p>STEM ability is learned and developed, not inherited by gender.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Over the past two decades, universities worldwide have seen a steady rise in women enrolling in engineering disciplines when mentorship programs, scholarships, and inclusive classrooms are introduced. Institutions that actively support women in STEM report not only higher participation but also stronger collaborative innovation within research teams.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Nursing is for women.</div>
+<div class="accordion-content">
+<p>Care professions require empathy and skill — not femininity.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>The number of men entering nursing has increased globally as healthcare systems recognise the importance of diverse caregiving teams. Male nurses contribute across emergency care, mental health, and surgical recovery, helping dismantle the perception that compassion belongs to one gender.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Girls are bad at math.</div>
+<div class="accordion-content">
+<p>Performance differences often reflect expectation and encouragement, not ability.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Educational studies show that performance differences in mathematics disappear in environments where teachers actively counter bias and encourage equal participation. Countries that promote gender-neutral STEM education report nearly identical achievement levels between boys and girls.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women are too emotional to lead.</div>
+<div class="accordion-content">
+<p>Emotional intelligence strengthens leadership rather than weakening it.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Research into leadership styles has found that emotional intelligence — often dismissed as “emotionality” — improves team management, conflict resolution, and organisational trust. Many successful leaders combine analytical thinking with empathy-driven decision-making.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men don’t need parental leave.</div>
+<div class="accordion-content">
+<p>Shared caregiving strengthens both families and workplaces.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Workplaces that introduced paternity leave saw increased employee retention, stronger family wellbeing, and more balanced caregiving roles at home. Men who took leave remained more engaged parents long-term, challenging the idea that childcare is secondary to professional identity.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="category">
+<h2>Personality & Emotions</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Boys don’t cry.</div>
+<div class="accordion-content">
+<p>Suppressing emotion harms mental health and discourages vulnerability.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Mental-health research across several countries found that men are significantly less likely to seek psychological help — not because they experience fewer emotional struggles, but because they are socialised to suppress vulnerability. Campaigns encouraging emotional openness among men have led to increased counselling participation and improved overall wellbeing.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women gossip more.</div>
+<div class="accordion-content">
+<p>This stereotype trivializes women’s communication patterns.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Communication studies reveal that both men and women engage in social discussion at similar rates, yet women’s conversations are more likely to be labelled negatively due to cultural expectations. In professional environments, collaborative dialogue — often dismissed as gossip — is now recognised as relationship-building communication.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men must always be dominant.</div>
+<div class="accordion-content">
+<p>Healthy relationships and workplaces thrive on adaptability, not dominance.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Modern leadership and psychology research shows that collaborative and empathetic leadership styles — once considered “non-dominant” — produce stronger team outcomes and higher trust levels. Men encouraged to adopt flexible behavioural roles report healthier relationships and reduced stress.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women are overly dramatic.</div>
+<div class="accordion-content">
+<p>Labeling emotion as drama dismisses legitimate concerns.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Workplace studies show that when women express concern or urgency, their communication is more likely to be interpreted as emotional rather than analytical. However, when identical statements are presented without gender identification, evaluators rate them as equally rational.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men don’t need therapy.</div>
+<div class="accordion-content">
+<p>Mental health care is essential for everyone.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Public health initiatives targeting men’s mental health found that when therapy was reframed as performance optimisation or resilience training, participation increased dramatically. This demonstrated that stigma — not lack of need — was preventing engagement.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="category">
+<h2>Workplace & Leadership</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Women aren’t good negotiators.</div>
+<div class="accordion-content">
+<p>Negotiation is a skill shaped by environment and evaluation systems — not gender.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Organisational behaviour studies show that women negotiate just as effectively as men when evaluation criteria are transparent and bias is reduced. Differences often arise not from ability, but from how assertiveness is perceived. When companies standardised negotiation frameworks, outcome gaps narrowed significantly.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men are natural leaders.</div>
+<div class="accordion-content">
+<p>Leadership depends on communication, adaptability, and decision-making — not biology.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Modern leadership research demonstrates that effective leadership is developed through experience. Companies with gender-diverse leadership teams report improved innovation, stronger risk assessment, and healthier organisational cultures.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women exaggerate harassment.</div>
+<div class="accordion-content">
+<p>Dismissal often hides systemic barriers to safe reporting.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Workplace reforms introducing formal reporting mechanisms and anonymous systems revealed that underreporting — not exaggeration — was the larger issue. Many cases remained unreported due to fear of professional consequences.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men shouldn’t work under female bosses.</div>
+<div class="accordion-content">
+<p>Professional respect is built on competence and communication, not gender.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Global workforce surveys show that employee satisfaction correlates far more with managerial ability than with gender. Teams led by women often demonstrate higher collaboration and inclusive work cultures, particularly in knowledge-driven industries.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women are less ambitious.</div>
+<div class="accordion-content">
+<p>Structural barriers, not lack of drive, often influence career progression.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Career progression studies reveal that women frequently face limited mentorship access or assumptions about future caregiving responsibilities. When organisations introduced equal sponsorship and transparent promotion pathways, leadership applications and advancement rates increased significantly.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="category">
+<h2>Sports & Physical Ability</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Girls are bad at sports.</div>
+<div class="accordion-content">
+<p>Performance often reflects opportunity and encouragement — not inherent ability.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>When schools introduced equal access to coaching, facilities, and encouragement, participation of girls in athletics rose significantly, along with measurable improvements in performance. Research shows that gaps in outcomes frequently mirror differences in training exposure rather than capability.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Certain sports are only for boys.</div>
+<div class="accordion-content">
+<p>Sports participation expands when access barriers are removed.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Women now compete at elite levels in sports once considered exclusively male, including boxing, weightlifting, and cricket. As governing bodies invested in women’s leagues and opened competitive pathways, both performance standards and audience engagement increased significantly.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Girls are too fragile for competitive sports.</div>
+<div class="accordion-content">
+<p>Capability grows through structured training, not exclusion.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Sports science research demonstrates that training programs tailored for female athletes build strength, endurance, and resilience comparable within their physiological categories. Injury rates often decrease when athletes receive proper conditioning and institutional support rather than protective exclusion.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men shouldn’t do dance or gymnastics.</div>
+<div class="accordion-content">
+<p>Artistic athleticism requires discipline, strength, and endurance.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Disciplines such as gymnastics, classical dance, and contemporary performance demand exceptional physical control and conditioning. Male performers in these fields train with athletic intensity comparable to competitive sports, challenging the notion that expressive arts lack physical rigor.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men are always physically stronger.</div>
+<div class="accordion-content">
+<p>Strength and performance vary widely within individuals.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>While biological averages may differ, strength, endurance, and skill depend heavily on conditioning, discipline, and technique. Many training environments classify athletes by weight and performance level rather than by gender alone, recognising ability through measurable criteria.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="category">
+<h2>Media & Culture</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Pink is for girls; blue is for boys.</div>
+<div class="accordion-content">
+<p>Color associations are socially constructed and shaped by cultural messaging.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Historical analysis of children’s clothing shows that colour associations were not always gendered. In earlier periods, choices were largely neutral, and the modern pink–blue divide emerged through 20th-century marketing strategies targeting consumers. Retail trends illustrate how cultural messaging — not biology — created these associations.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women are valued more for appearance.</div>
+<div class="accordion-content">
+<p>Media narratives influence what societies learn to prioritise.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Media representation studies found that women are more frequently portrayed in roles emphasising physical appearance, while men are depicted through action or authority. Campaigns promoting diverse representation have shown measurable improvement in audience perception and self-image when achievements are highlighted over appearance.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men shouldn’t care about fashion.</div>
+<div class="accordion-content">
+<p>Personal style is a form of human self-expression.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>The global fashion industry includes major contributions from male designers, stylists, and consumers. Changing retail patterns show increasing acceptance of men’s self-expression through clothing, reflecting how identity and aesthetics are not confined to one gender.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men must initiate relationships.</div>
+<div class="accordion-content">
+<p>Healthy relationships thrive on shared initiative and communication.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Sociological research on modern relationships indicates that mutual initiation leads to more balanced communication and decision-making. As dating norms evolve, both individuals participate actively, reducing pressure created by rigid expectations.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Strong women must lack emotion.</div>
+<div class="accordion-content">
+<p>Emotional awareness enhances leadership and decision-making.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Leadership and psychology research shows that emotional intelligence — including empathy and relational awareness — strengthens conflict resolution and team engagement. Women leaders who combine confidence with emotional awareness often foster higher trust within organisations.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="category">
+<h2>Safety & Social Control</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Girls shouldn’t stay out late.</div>
+<div class="accordion-content">
+<p>Restricting mobility does not address the root causes of unsafe environments.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Urban safety research shows that limiting women’s movement does not reduce systemic risk. Cities that improved lighting, public transport access, and community policing saw safety increase for everyone — without restricting women’s freedom of movement.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Clothing determines respect.</div>
+<div class="accordion-content">
+<p>Respect is shaped by values and accountability, not appearance.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Studies on workplace and public behaviour indicate that attitudes toward individuals are influenced more by cultural bias than by clothing. Awareness campaigns emphasising consent and mutual respect have proven more effective at reducing harassment than prescriptive dress expectations.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men can’t be victims of abuse.</div>
+<div class="accordion-content">
+<p>Vulnerability exists across all genders.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Support services that expanded outreach to men found many reluctant to report abuse due to stigma. When gender-neutral counselling and reporting systems were introduced, participation increased significantly, revealing hidden patterns of vulnerability.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women provoke harassment.</div>
+<div class="accordion-content">
+<p>Accountability belongs to actions, not assumptions about others.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Educational programs focusing on bystander intervention and accountability demonstrated measurable reductions in harassment by addressing behaviour rather than blaming targets. Institutions implementing these programs saw stronger reporting cultures and safer environments.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Equality means women overpower men.</div>
+<div class="accordion-content">
+<p>Equality frameworks aim for fairness and balance, not dominance.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Workplaces adopting equality frameworks reported improved collaboration, productivity, and job satisfaction across teams. These initiatives focus on equitable access, participation, and respect — not replacement of one group by another.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="category">
+<h2>Politics & Power</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Women are too soft for politics.</div>
+<div class="accordion-content">
+<p>Leadership effectiveness depends on strategy and results — not stereotyped toughness.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Studies of political leadership styles show that leaders who combine negotiation, collaboration, and consensus-building often achieve longer-lasting policy outcomes. Traits sometimes labelled as “soft” are now recognised as essential for conflict resolution and governance in complex societies.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men make better decisions under pressure.</div>
+<div class="accordion-content">
+<p>Performance under pressure is shaped by preparation and experience.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Research in organisational psychology finds that decision-making in high-pressure situations depends more on training, situational awareness, and adaptability than gender. Diverse leadership teams often perform better in crises because they bring varied perspectives to problem-solving.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women vote emotionally.</div>
+<div class="accordion-content">
+<p>Civic decision-making reflects lived realities and policy priorities.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Political behaviour studies show that voting patterns across genders are influenced by education, socioeconomic context, and policy concerns rather than emotionality. Both men and women apply rational evaluation alongside personal values when participating in democratic processes.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Leadership quotas lower standards.</div>
+<div class="accordion-content">
+<p>Representation policies aim to remove structural barriers.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Institutions that introduced representation frameworks often observed an expansion of the available talent pool rather than a decline in quality. By reducing systemic exclusion, these measures allowed capable individuals to compete and contribute in leadership roles.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men shouldn’t support feminism
+<div class="category">
+<div class="category">
+<h2>Relationships & Social Expectations</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">Men must always propose.</div>
+<div class="accordion-content">
+<p>Healthy relationships are built on shared initiative and communication.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Modern relationship research shows that partnerships built on mutual initiation and active communication tend to report higher long-term satisfaction. When both individuals participate in defining the relationship, decision-making becomes more balanced and respectful.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women must adjust more in marriage.</div>
+<div class="accordion-content">
+<p>Sustainable partnerships require mutual flexibility.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Family studies demonstrate that marriages based on shared adaptation — where both partners negotiate, compromise, and support one another — report healthier emotional environments and reduced conflict compared to relationships where adjustment is expected from only one side.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men should not express insecurity.</div>
+<div class="accordion-content">
+<p>Emotional vulnerability strengthens connection and resilience.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Psychological research shows that men encouraged to communicate vulnerability develop stronger interpersonal relationships and lower stress levels. Suppressing insecurity often leads to isolation rather than stability.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">A working mother neglects her family.</div>
+<div class="accordion-content">
+<p>Caregiving quality is shaped by involvement, not employment status.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Studies of dual-income households reveal that children benefit from environments where caregiving responsibilities are shared. Exposure to working parents of all genders also broadens children’s understanding of roles, aspirations, and responsibility.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Stay-at-home fathers are lazy.</div>
+<div class="accordion-content">
+<p>Unpaid domestic labour is essential work.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Research on stay-at-home fathers highlights the complexity of unpaid domestic responsibilities, including childcare coordination, emotional support, and household management. These roles contribute significantly to family wellbeing despite lacking monetary recognition.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="category">
+<div class="category">
+<h2>Identity & Self-Worth</h2>
+
+<div class="accordion-item">
+<div class="accordion-header">A man’s worth depends on income.</div>
+<div class="accordion-content">
+<p>Human value extends far beyond financial contribution.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Sociological studies show that tying male identity solely to financial success increases stress, discourages career flexibility, and contributes to burnout. Broader definitions of worth — including caregiving, creativity, and collaboration — are associated with healthier life outcomes.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">A woman’s worth depends on appearance.</div>
+<div class="accordion-content">
+<p>Achievement and character define identity — not physical presentation.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Media literacy programs that shift focus from appearance to achievement have been shown to improve confidence, academic participation, and leadership engagement among young women.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Men must always be emotionally strong.</div>
+<div class="accordion-content">
+<p>Resilience includes seeking support and expressing emotion.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Health research indicates that redefining strength to include emotional openness and help-seeking behaviour leads to improved mental health outcomes and stronger social support networks for men.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Women should avoid “male-dominated” spaces.</div>
+<div class="accordion-content">
+<p>Inclusive participation transforms culture and innovation.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>When institutions actively encourage cross-gender participation, representation increases and workplace culture shifts from exclusion toward collaboration. These changes improve innovation, retention, and organisational wellbeing.</p>
+</div>
+
+</div>
+</div>
+
+<div class="accordion-item">
+<div class="accordion-header">Equality has already been achieved.</div>
+<div class="accordion-content">
+<p>Progress exists, but structural and cultural gaps remain.</p>
+
+<div class="example">
+<strong>Real-World Insight:</strong>
+<p>Data across education, employment, and domestic labour distribution shows measurable progress alongside continuing disparities in representation, workload balance, and opportunity access. Recognising this complexity helps move discussions from denial toward constructive improvement.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<h2>Final Reflection</h2>
+
+<div style="background:white; padding:30px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+
+<p><strong>Pause for a moment.</strong></p>
+
+<p>
+If even one of these stereotypes felt familiar, it means they are not abstract ideas — they are patterns that quietly shape behaviour, expectations, and opportunities.
+</p>
+
+<p>
+Stereotypes survive when they go unquestioned.  
+They weaken when examined.
+</p>
+
+<p>
+Gender equality is not about replacing one group with another.  
+It is about expanding possibility — for everyone.
+</p>
+
+<p>
+Change does not begin in policy documents.  
+It begins in perception.
+</p>
+
+<div style="text-align:center; margin-top:30px;">
+<a href="quiz.html">
+<button style="padding:14px 28px; background:#7c3aed; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">
+Test Your Awareness →
+</button>
+</a>
+</div>
+
+</div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Dark Mode
+    window.toggleDarkMode = function() {
+        document.body.classList.toggle("dark-mode");
+    };
+
+    // Search
+    const searchInput = document.getElementById("search");
+    if (searchInput) {
+        searchInput.addEventListener("keyup", function () {
+            let filter = this.value.toLowerCase();
+            document.querySelectorAll(".accordion-item").forEach(item => {
+                item.style.display =
+                    item.innerText.toLowerCase().includes(filter) ? "" : "none";
+            });
+        });
+    }
+
+    // Accordion
+    document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("accordion-header")) {
+            const content = e.target.nextElementSibling;
+            const open = document.querySelector(".accordion-content.active");
+
+            if (open && open !== content) {
+                open.style.maxHeight = null;
+                open.classList.remove("active");
+            }
+
+            if (content.classList.contains("active")) {
+                content.style.maxHeight = null;
+                content.classList.remove("active");
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add("active");
+            }
+        }
+    });
+
+    // Scroll reveal
+    const items = document.querySelectorAll(".accordion-item");
+    window.addEventListener("scroll", () => {
+        items.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                item.classList.add("show");
+            }
+        });
+    });
+
+});
+
+// Pledge
+function pledge() {
+    document.getElementById("pledgeMessage").innerText =
+        "Thank you for committing to equality. Change begins with you.";
+
+    launchConfetti();
+    playApplause();
+}
+
+// Confetti Explosion
+function launchConfetti() {
+    const button = document.getElementById("pledgeBtn");
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+    const colors = ["#7c3aed", "#2563eb", "#ec4899", "#10b981", "#f59e0b"];
+
+    for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = rect.left + rect.width / 2 + "px";
+        confetti.style.top = rect.top + rect.height / 2 + "px";
+        confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 200 + 50;
+
+        confetti.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        confetti.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+        confetti.style.animation = "explode 1.2s ease-out forwards";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 1200);
+    }
+}
+
+// Applause
+function playApplause() {
+    const sound = document.getElementById("applauseSound");
+    if (sound) {
+        sound.currentTime = 0;
+        sound.volume = 0.4;
+        sound.play().catch(() => {});
+    }
+}
+
+</script>

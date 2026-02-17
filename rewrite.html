@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewrite the Situation</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f14;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+nav {
+  background: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #aaa;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: #1a1a24;
+  margin: 40px 0;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+.card.revealed {
+  box-shadow: 0 0 40px rgba(77, 255, 136, 0.2);
+}
+
+.situation {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.biased {
+  background: #2a1a1a;
+  padding: 15px;
+  border-left: 4px solid #ff4d4d;
+  margin: 15px 0;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.alternative {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 20px;
+  background: #1a2a1f;
+  padding: 0 15px;
+  border-left: 4px solid #4dff88;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
+}
+
+.alternative.show {
+  opacity: 1;
+  max-height: 500px;
+  padding: 15px;
+  transform: translateY(0);
+}
+
+
+.why {
+  margin-top: 10px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.reflection {
+  text-align: center;
+  padding: 60px 20px;
+  background: #111;
+  margin-top: 60px;
+}
+
+.reflection h2 {
+  font-weight: 300;
+}
+
+.cta-buttons a {
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.cta-buttons a:hover {
+  background: #fff;
+  color: #000;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div>Gender Equality Project</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="stereotypes.html">Stereotypes</a>
+    <a href="quiz.html">Quiz</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Rewrite the Situation</h1>
+  <p>Equality isn't just policy. It's a response.  
+  A pause. A choice. A different sentence.</p>
+</section>
+
+<div class="container">
+
+  <!-- Scenario 1 -->
+  <div class="card">
+    <div class="situation">A woman suggests an idea in a meeting. It is ignored. Later, a man repeats it and gets praised.</div>
+    
+    <div class="biased">
+      "Yeah, that's brilliant. Let’s go with that."
+    </div>
+
+    <label>How would you respond differently?</label>
+    <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+    <button onclick="toggleAnswer(1)">Reveal a Healthy Response</button>
+
+    <div id="alt1" class="alternative">
+      "I believe she mentioned that earlier. It’s a strong idea — let’s build on what she said."
+      <div class="why">
+        Recognition reinforces confidence and professional credibility.
+      </div>
+    </div>
+  </div>
+
+  <!-- Scenario 2 -->
+  <div class="card">
+    <div class="situation">A boy says he wants to be a nurse.</div>
+    
+    <div class="biased">
+      "That’s not really a job for boys."
+    </div>
+
+    <label>How would you respond differently?</label>
+    <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+    <button onclick="toggleAnswer(2)">Reveal a Healthy Response</button>
+
+    <div id="alt2" class="alternative">
+      "Nursing requires skill and compassion. If that’s your passion, pursue it."
+      <div class="why">
+        Careers are defined by ability, not gender.
+      </div>
+    </div>
+  </div>
+
+  <!-- Scenario 3 -->
+  <div class="card">
+    <div class="situation">A boy cries after losing a match.</div>
+    
+    <div class="biased">
+      "Stop crying. Be a man."
+    </div>
+
+    <label>How would you respond differently?</label>
+    <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+    <button onclick="toggleAnswer(3)">Reveal a Healthy Response</button>
+
+    <div id="alt3" class="alternative">
+      "It’s okay to feel disappointed. That shows you cared."
+      <div class="why">
+        Emotional expression builds resilience, not weakness.
+      </div>
+    </div>
+  </div>
+<!-- Scenario 4 -->
+<div class="card">
+  <div class="situation">
+    Guests arrive. Only the daughters are asked to help in the kitchen.
+  </div>
+  
+  <div class="biased">
+    "Girls are better at this anyway."
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(4)">Reveal a Healthy Response</button>
+
+  <div id="alt4" class="alternative">
+    "Everyone in the house can help. Let’s share the responsibility."
+    <div class="why">
+      Equality at home shapes equality everywhere else.
+    </div>
+  </div>
+</div>
+<!-- Scenario 5 -->
+<div class="card">
+  <div class="situation">
+    A woman negotiates firmly for a higher salary.
+  </div>
+  
+  <div class="biased">
+    "She’s being too aggressive."
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(5)">Reveal a Healthy Response</button>
+
+  <div id="alt5" class="alternative">
+    "She’s advocating for her value and experience."
+    <div class="why">
+      The same confidence praised in men is often criticized in women.
+    </div>
+  </div>
+</div>
+<!-- Scenario 6 -->
+<div class="card">
+  <div class="situation">
+    A girl joins football practice for the first time.
+  </div>
+  
+  <div class="biased">
+    "Isn’t that too rough for you?"
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(6)">Reveal a Healthy Response</button>
+
+  <div id="alt6" class="alternative">
+    "If you enjoy it, train hard and play strong."
+    <div class="why">
+      Limiting participation limits potential.
+    </div>
+  </div>
+</div>
+<!-- Scenario 7 -->
+<div class="card">
+  <div class="situation">
+    During a college event, people assume a boy will handle logistics and a girl will handle decoration.
+  </div>
+  
+  <div class="biased">
+    "It just makes more sense that way."
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(7)">Reveal a Healthy Response</button>
+
+  <div id="alt7" class="alternative">
+    "Let’s assign roles based on interest and skill, not assumptions."
+    <div class="why">
+      Bias often hides inside the phrase ‘that’s just how it is.’
+    </div>
+  </div>
+</div>
+<!-- Scenario 8 -->
+<div class="card">
+  <div class="situation">
+    Someone makes a sexist joke in a group conversation.
+  </div>
+  
+  <div class="biased">
+    (Laughter)
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(8)">Reveal a Healthy Response</button>
+
+  <div id="alt8" class="alternative">
+    "That joke targets a group unfairly. Let’s keep it respectful."
+    <div class="why">
+      Silence can normalize harm.
+    </div>
+  </div>
+</div>
+<!-- Scenario 9 -->
+<div class="card">
+  <div class="situation">
+    A woman walks home late at night. Someone says:
+  </div>
+  
+  <div class="biased">
+    "Why is she out so late anyway?"
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(9)">Reveal a Healthy Response</button>
+
+  <div id="alt9" class="alternative">
+    "The question isn’t why she’s outside. It’s why she isn’t safe."
+    <div class="why">
+      Responsibility belongs to those who harm — not those who exist.
+    </div>
+  </div>
+</div>
+<!-- Scenario 10 -->
+<div class="card">
+  <div class="situation">
+    A girl scores highest in a math exam.
+  </div>
+  
+  <div class="biased">
+    "Wow, I didn’t expect that."
+  </div>
+
+  <label>How would you respond differently?</label>
+  <textarea placeholder="Rewrite the response... (optional)"></textarea>
+
+  <button onclick="toggleAnswer(10)">Reveal a Healthy Response</button>
+
+  <div id="alt10" class="alternative">
+    "She worked hard and earned it. Excellence isn’t gendered."
+    <div class="why">
+      Surprise reveals bias we didn’t realize we carried.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<section class="reflection">
+  <h2>Equality begins in the next moment.</h2>
+  <p>No one gets it right every time.  
+  But awareness changes the next sentence.</p>
+
+  <div class="cta-buttons">
+    <a href="stereotypes.html">Explore Stereotypes</a>
+    <a href="quiz.html">Retake Quiz</a>
+  </div>
+</section>
+
+<script>
+function toggleAnswer(num) {
+  const element = document.getElementById("alt" + num);
+  element.classList.toggle("show");
+}
+</script>
+
+
+</body>
+</html>

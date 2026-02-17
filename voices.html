@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voices</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0e0e12;
+  color: #f5f5f5;
+  line-height: 1.7;
+}
+
+nav {
+  background: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.hero {
+  text-align: center;
+  padding: 90px 20px 50px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 300;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #aaa;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.story-card {
+  background: #1a1a22;
+  padding: 30px;
+  margin: 40px 0;
+  border-radius: 10px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+
+.story-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-text {
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.story-meta {
+  font-size: 13px;
+  color: #888;
+}
+
+.submit-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #111;
+  margin-top: 60px;
+}
+
+.submit-section a {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.submit-section a:hover {
+  background: #fff;
+  color: #000;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div>Gender Equality Project</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="stereotypes.html">Stereotypes</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="rewrite.html">Rewrite</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Voices</h1>
+  <p>
+    Behind every statistic is a story.  
+    Behind every policy is a person.
+  </p>
+</section>
+
+<div class="container">
+
+  <!-- Story 1 -->
+  <div class="story-card">
+    <div class="story-text">
+      “When I said I wanted to pursue engineering, people laughed.
+      Not because I wasn’t capable — but because I was a girl.
+      I didn’t change my dream. I changed their expectations.”
+    </div>
+    <div class="story-meta">
+      — Anonymous, 19
+    </div>
+  </div>
+
+  <!-- Story 2 -->
+  <div class="story-card">
+    <div class="story-text">
+      “Growing up, I was told boys don’t cry.
+      It took me years to unlearn that silence.”
+    </div>
+    <div class="story-meta">
+      — Anonymous, 21
+    </div>
+  </div>
+
+  <!-- Story 3 -->
+  <div class="story-card">
+    <div class="story-text">
+      “I never noticed the bias until I became the only woman in the room.
+      Then I noticed everything.”
+    </div>
+    <div class="story-meta">
+      — Anonymous, 23
+    </div>
+  </div>
+
+</div>
+
+<section class="submit-section">
+  <h2>Share Your Story</h2>
+  <p>Your voice matters. It may empower someone you’ll never meet.</p>
+  
+ <a href="https://forms.gle/iyDB1rxACsoorKaD7">Submit Anonymously</a>
+
+</section>
+
+<script>
+// Scroll reveal animation
+const cards = document.querySelectorAll('.story-card');
+
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  cards.forEach(card => {
+    const boxTop = card.getBoundingClientRect().top;
+
+    if (boxTop < triggerBottom) {
+      card.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+
+</body>
+</html>
